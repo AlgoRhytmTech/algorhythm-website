@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-600;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0d0f12;
+  }
+
+  ::selection {
+    background-color: rgba(217, 164, 65, 0.28);
+    color: #edebe5;
+  }
+
+  :focus-visible {
+    outline: 2px solid #d9a441;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    letter-spacing: -0.01em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* eyebrow / gutter label, mimics an editor line-number gutter marker */
+  .gutter-label {
+    @apply font-mono text-2xs uppercase tracking-[0.2em] text-paper-400;
+  }
+
+  .hairline {
+    @apply border-t border-ink-600;
+  }
+
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-6 md:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-sm px-5 py-3 text-sm font-medium transition-colors duration-150;
+  }
+
+  .btn-primary {
+    @apply btn bg-signal text-ink-950 hover:bg-signal-bright;
+  }
+
+  .btn-secondary {
+    @apply btn border border-ink-500 text-paper-200 hover:border-paper-400 hover:bg-ink-800;
+  }
+
+  .btn-ghost {
+    @apply btn text-paper-300 hover:text-paper-100;
+  }
+
+  .card {
+    @apply rounded-sm border border-ink-600 bg-ink-850;
+  }
+
+  .line-num {
+    @apply select-none font-mono text-2xs text-ink-500;
+  }
+}
