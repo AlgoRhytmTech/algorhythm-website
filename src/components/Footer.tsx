@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import AlgorhythmMark from './AlgorhythmMark';
+import TraceMark from './TraceMark';
 
 interface FooterProps {
   variant?: 'company' | 'trace';
@@ -11,7 +13,10 @@ export default function Footer({ variant = 'company' }: FooterProps) {
         <div>
           {variant === 'trace' ? (
             <>
-              <div className="font-display text-lg font-semibold text-paper-100">TRACE</div>
+              <div className="flex items-center gap-2 font-display text-lg font-semibold text-paper-100">
+                <TraceMark className="h-5 w-5" />
+                TRACE
+              </div>
               <p className="mt-1 max-w-sm font-mono text-2xs text-paper-500">
                 Translational Runtime Analysis and Compilation Engine
               </p>
@@ -25,7 +30,10 @@ export default function Footer({ variant = 'company' }: FooterProps) {
             </>
           ) : (
             <>
-              <div className="font-display text-lg font-semibold text-paper-100">AlgoRhythm</div>
+              <div className="flex items-center gap-2 font-display text-lg font-semibold text-paper-100">
+                <AlgorhythmMark className="h-5 w-5" />
+                AlgoRhythm
+              </div>
               <p className="mt-1 text-sm text-paper-400">Building, learning, and shipping.</p>
             </>
           )}

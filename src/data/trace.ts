@@ -1,12 +1,36 @@
 export const pipelineStages = [
-  { label: 'Source', detail: 'Raw .tc source text' },
-  { label: 'Lexing', detail: 'Characters → tokens' },
-  { label: 'Parsing', detail: 'Tokens → syntax tree' },
-  { label: 'AST', detail: 'Structured program tree' },
-  { label: 'Semantic Analysis', detail: 'Scope & binding checks' },
-  { label: 'Type Checking', detail: 'Static type verification' },
-  { label: 'IR / Bytecode', detail: 'Lowered intermediate form' },
-  { label: 'Runtime', detail: 'Execution & output' },
+  {
+    label: 'Source',
+    detail: 'Raw .trc source text',
+  },
+  {
+    label: 'Lexing',
+    detail: 'Characters → tokens',
+  },
+  {
+    label: 'Parsing',
+    detail: 'Tokens → syntax tree',
+  },
+  {
+    label: 'AST',
+    detail: 'Structured program tree',
+  },
+  {
+    label: 'Semantic Analysis',
+    detail: 'Scope & binding checks',
+  },
+  {
+    label: 'Type Checking',
+    detail: 'Static type verification',
+  },
+  {
+    label: 'IR / Bytecode',
+    detail: 'Lowered intermediate form',
+  },
+  {
+    label: 'Runtime',
+    detail: 'Execution & output',
+  },
 ];
 
 export interface TraceStageSection {
@@ -20,33 +44,45 @@ export const stageSections: TraceStageSection[] = [
     id: 'lexer-parser',
     title: 'Lexer & Parser',
     copy:
-      'Core areas: converting raw source text into tokens, then assembling those tokens into a structured abstract syntax tree that the rest of the pipeline can reason about.',
+      'TRACE begins by transforming source code into tokens and then organizing those tokens into a structured abstract syntax tree. These stages form the foundation for everything that follows.',
   },
   {
     id: 'semantic-analysis',
     title: 'Semantic Analysis',
     copy:
-      'Designed around scope resolution, symbol tables, and binding checks — catching structural errors before a program ever reaches execution.',
+      'The semantic layer gives structure meaning. Scope resolution, symbol tables, name binding, and other semantic checks help identify invalid programs before execution.',
   },
   {
     id: 'type-checking',
     title: 'Type Checking',
     copy:
-      'Core areas: static verification of declared and inferred types across expressions, so type errors surface at compile time rather than at runtime.',
+      'TRACE is designed around static type verification so that incompatible operations and assignments can be identified during compilation rather than discovered unexpectedly at runtime.',
   },
   {
     id: 'runtime-bytecode',
     title: 'Runtime / Bytecode',
     copy:
-      'Designed around a compact intermediate representation that a small runtime can execute directly, keeping the path from IR to output easy to follow.',
+      'The execution side of TRACE is designed around a compact intermediate representation and runtime, keeping the path from compiled representation to program output understandable.',
   },
 ];
 
 export const docSections = [
-  { title: 'Getting Started', copy: 'Install TRACE and run your first program.' },
-  { title: 'Language Reference', copy: 'Syntax, types, and language semantics.' },
-  { title: 'CLI Reference', copy: 'Commands and flags for the trace toolchain.' },
-  { title: 'Compiler Internals', copy: 'How the pipeline is structured internally.' },
+  {
+    title: 'Getting Started',
+    copy: 'Install TRACE, create a .trc file, and run your first program.',
+  },
+  {
+    title: 'Language Reference',
+    copy: 'Explore TRACE syntax, types, expressions, functions, and control flow.',
+  },
+  {
+    title: 'CLI Reference',
+    copy: 'Learn the commands and options available through the TRACE toolchain.',
+  },
+  {
+    title: 'Compiler Internals',
+    copy: 'Explore the stages that transform TRACE source code into executable form.',
+  },
 ];
 
 export interface DownloadTarget {
@@ -56,9 +92,21 @@ export interface DownloadTarget {
 }
 
 export const downloadTargets: DownloadTarget[] = [
-  { platform: 'macOS', detail: 'Coming soon', available: false },
-  { platform: 'Windows', detail: 'Coming soon', available: false },
-  { platform: 'Linux', detail: 'Coming soon', available: false },
+  {
+    platform: 'macOS',
+    detail: 'Platform binaries will be published with the first public release',
+    available: false,
+  },
+  {
+    platform: 'Windows',
+    detail: 'Platform binaries will be published with the first public release',
+    available: false,
+  },
+  {
+    platform: 'Linux',
+    detail: 'Platform binaries will be published with the first public release',
+    available: false,
+  },
 ];
 
 export interface ReleaseEntry {
@@ -67,9 +115,12 @@ export interface ReleaseEntry {
   notes: string;
 }
 
-// Placeholder release history — replace with real entries at launch.
 export const releases: ReleaseEntry[] = [
-  { version: '0.0.0', date: 'Unreleased', notes: 'Placeholder — no builds published yet.' },
+  {
+    version: '0.1.0',
+    date: 'In development',
+    notes: 'Active development version. The TRACE language and compiler are under active development.',
+  },
 ];
 
 export const codeExample = `let x: int = 10;

@@ -15,7 +15,7 @@ export default function HomeContact() {
         href="mailto:algorhythm65@gmail.com"
         className="btn-secondary mt-8 inline-flex"
       >
-        algorhythm65@gmail.com <span className="text-paper-500">(placeholder)</span>
+        algorhythm65@gmail.com
       </a>
     </section>
   );

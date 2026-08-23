@@ -1,4 +1,5 @@
 import SignalTrace from '@/components/SignalTrace';
+import AlgorhythmMark from '@/components/AlgorhythmMark';
 
 export default function HomeHero() {
   return (
@@ -8,9 +9,12 @@ export default function HomeHero() {
         aria-hidden="true"
       />
       <p className="gutter-label mb-6">// algorhythm.init()</p>
-      <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-paper-100 sm:text-5xl md:text-6xl">
-        Building software with rhythm, logic, and intent.
-      </h1>
+      <div className="flex items-center gap-4 mb-6">
+        <AlgorhythmMark className="h-8 w-8" />
+        <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight text-paper-100 sm:text-5xl md:text-6xl">
+          Building software with rhythm, logic, and intent.
+        </h1>
+      </div>
       <p className="mt-6 max-w-xl text-lg leading-relaxed text-paper-300">
         AlgoRhythm is an engineering-focused technology initiative — practical
         software, built from fundamentals, in the open.

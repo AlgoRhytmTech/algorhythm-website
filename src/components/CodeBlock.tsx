@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 interface CodeBlockProps {
   code: string;
   filename?: string;
@@ -6,6 +8,31 @@ interface CodeBlockProps {
 
 export default function CodeBlock({ code, filename = 'main.tc', output }: CodeBlockProps) {
   const lines = code.split('\n');
+  const [visibleLines, setVisibleLines] = useState<number[]>([]);
+  const [cursorPosition, setCursorPosition] = useState<number>(0);
+
+  useEffect(() => {
+    // Simulate typing effect for code reveal
+    if (lines.length === 0) return;
+
+    let currentLine = 0;
+    const interval = setInterval(() => {
+      setVisibleLines((prev) => [...prev, currentLine]);
+      currentLine++;
+      if (currentLine >= lines.length) {
+        clearInterval(interval);
+        // After code is revealed, show cursor blinking
+        const cursorInterval = setInterval(() => {
+          setCursorPosition((prev) => (prev + 1) % 2);
+        }, 500);
+        return () => clearInterval(cursorInterval);
+      }
+    }, 300);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [lines.length]);
 
   return (
     <div className="card overflow-hidden">
@@ -19,20 +46,31 @@ export default function CodeBlock({ code, filename = 'main.tc', output }: CodeBl
       </div>
       <pre className="overflow-x-auto p-5 text-sm leading-relaxed">
         <code className="font-mono">
-          {lines.map((line, i) => (
-            <div key={i} className="flex">
-              <span className="line-num mr-4 w-4 text-right">{i + 1}</span>
+          {lines.map((line, index) => (
+            <div
+              key={index}
+              className={`flex opacity-0 transform translate-y-1 transition-all duration-500 ease-out ${visibleLines.includes(index) ? 'opacity-100 transform translate-y-0' : ''}`}
+              style={{ transitionDelay: `${index * 50}ms` }}
+            >
+              <span className="line-num mr-4 w-4 text-right text-paper-400">{index + 1}</span>
               <span className="text-paper-200">{line || '\u00A0'}</span>
             </div>
           ))}
+          {/* Animated cursor */}
+          {visibleLines.length === lines.length && (
+            <div className="flex">
+              <span className="line-num mr-4 w-4 text-right text-paper-400">{lines.length + 1}</span>
+              <span className={`inline-block w-1 h-5 bg-paper-200 animate-[cursor-blink_1s_ease-in-out_infinite] opacity-${cursorPosition * 100}`} />
+            </div>
+          )}
         </code>
       </pre>
       {output !== undefined && (
         <div className="border-t border-ink-600 bg-ink-950 px-5 py-4">
-          <div className="mb-2 font-mono text-2xs uppercase tracking-[0.2em] text-paper-500">
+          <div className="mb-2 font-mono text-2xs uppercase tracking-[0.2em] text-paper-500 animate-[fade-up_0.6s_ease-out forwards]">
             Output
           </div>
-          <div className="font-mono text-sm text-signal">{output}</div>
+          <div className="font-mono text-sm text-signal animate-[fade-up_0.6s_ease-out_0.2s forwards]">{output}</div>
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import AlgorhythmMark from '@/components/AlgorhythmMark';
 
 const links = [
   { label: 'Projects', href: '/#projects' },
@@ -12,7 +13,7 @@ export default function NavBar() {
     <header className="sticky top-0 z-40 border-b border-ink-600 bg-ink-900/90 backdrop-blur">
       <nav className="container-page flex h-16 items-center justify-between" aria-label="Primary">
         <Link to="/" className="flex items-center gap-2 font-display text-lg font-semibold tracking-tight text-paper-100">
-          <span className="h-2 w-2 rounded-full bg-signal" aria-hidden="true" />
+          <AlgorhythmMark className="h-4 w-4" />
           AlgoRhythm
         </Link>
         <ul className="hidden items-center gap-8 md:flex">

@@ -48,6 +48,20 @@ export default {
       },
       animation: {
         'pulse-slow': 'pulse 3.5s ease-in-out infinite',
+        'spark-travel': 'spark-travel 1.8s ease-in-out infinite',
+        'fade-up': 'fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both',
+      },
+      keyframes: {
+        'spark-travel': {
+          '0%': { transform: 'translateX(0)', opacity: '0' },
+          '12%': { opacity: '1' },
+          '88%': { opacity: '1' },
+          '100%': { transform: 'translateX(100%)', opacity: '0' },
+        },
+        'fade-up': {
+          '0%': { transform: 'translateY(14px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
       },
     },
   },

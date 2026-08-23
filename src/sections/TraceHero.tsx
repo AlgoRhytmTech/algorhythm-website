@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import SignalTrace from '@/components/SignalTrace';
+import AlgorhythmMark from '@/components/AlgorhythmMark';
 
 export default function TraceHero() {
   return (
@@ -12,7 +13,7 @@ export default function TraceHero() {
         to="/"
         className="gutter-label mb-6 inline-flex items-center gap-2 text-trace-bright hover:underline"
       >
-        <span className="h-1.5 w-1.5 rounded-full bg-trace" />
+        <AlgorhythmMark className="h-4 w-4" />
         An AlgoRhythm project
       </Link>
 
