@@ -135,7 +135,9 @@ export default function PipelineDiagram() {
           return (
             <div
               key={stage.label}
-              ref={(el) => (stageRefs.current[index] = el)}
+              ref={(el) => {
+  stageRefs.current[index] = el;
+}}
               data-stage-index={index}
               className="relative flex min-h-[70vh] items-center py-16"
             >
